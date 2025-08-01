@@ -1,0 +1,236 @@
+================================================================================
+                            LVS TOOLS - DOCUMENTACAO
+================================================================================
+
+VERSAO: v4.6 (Limpeza) | v2.5 (Rede)
+AUTOR: Leandro Venturini Sodre (lvsodre)
+LINKEDIN: linkedin.com/in/lvsodre
+DATA: 2025-08-01 20:06:49 UTC
+COMPATIBILIDADE: Windows 7/10/11
+
+================================================================================
+                                  VISAO GERAL
+================================================================================
+
+O LVS Tools e uma suite de 2 scripts para manutencao e diagnostico de sistemas
+Windows. Desenvolvida para tecnicos e administradores, oferece limpeza profunda
+e diagnostico de rede com relatorios HTML automaticos.
+
+SCRIPTS INCLUIDOS:
+- 01-Limpeza-Enterprise.bat (v4.6) - 18 etapas de limpeza
+- 02-Diagnostico-Rede.bat (v2.5) - 9 funcionalidades de rede
+
+================================================================================
+                            01-LIMPEZA-ENTERPRISE.BAT
+================================================================================
+
+FUNCIONALIDADE: Limpeza profunda do sistema em 18 etapas
+
+ETAPAS PRINCIPAIS:
+01. Temporarios do Usuario (TEMP)
+02. Temporarios do Sistema (Windows\Temp)
+03. Cache Prefetch
+04. Logs do Windows
+05. Cache do Windows Update
+06. Relatorios de Erro (WER)
+07. Cache de Miniaturas
+08. Cache de Papel de Parede
+09. Dumps e Crash Files
+10. Lixeira do Sistema
+11. Cache DNS (SEGURO - preserva rede)
+12. Processos Ociosos
+13. Cache Avancado (Fontes/Icones)
+14. Cache de Hardware (SEGURO)
+15. Cache de Performance
+16. Logs Criticos (BACKUP OBRIGATORIO)
+17. Rede Segura (SEM reset Winsock)
+18. Verificacao de Integridade (SFC)
+
+PARAMETROS:
+/silent  - Execucao automatica sem prompts
+/backup  - Forca criacao de backups
+/confirm - Confirmacao por etapa
+
+EXEMPLO:
+01-Limpeza-Enterprise.bat /silent /backup
+
+RESULTADO ESPERADO:
+- Liberacao de 100MB a 10GB de espaco
+- Melhoria de 15-40% na performance
+- Correcao de problemas comuns
+- Reducao no tempo de inicializacao
+
+================================================================================
+                            02-DIAGNOSTICO-REDE.BAT
+================================================================================
+
+FUNCIONALIDADE: Diagnostico e correcao de problemas de rede
+
+MENU PRINCIPAL:
+[1] Diagnostico Completo de Rede (RECOMENDADO)
+[2] Reset Total de Configuracoes de Rede (AVANCADO)
+[3] Liberacao e Renovacao de IP/DNS
+[4] Teste de Conectividade Avancado
+[5] Diagnostico de Performance de Rede
+[6] Analise de Adaptadores de Rede
+[7] Correcao de Problemas Comuns
+[8] Backup de Configuracoes de Rede
+[9] Gerar Relatorio HTML Completo
+[0] Sair
+
+TESTES INCLUIDOS:
+- Google DNS (8.8.8.8)
+- Cloudflare DNS (1.1.1.1)
+- Gateway local
+- Resolucao DNS multipla
+- Traceroute
+- Performance e latencia
+
+PARAMETROS:
+/auto     - Diagnostico automatico
+/backup   - Backup de configuracoes
+/advanced - Modo avancado
+/noreport - Sem relatorio HTML
+
+EXEMPLO:
+02-Diagnostico-Rede.bat /auto /backup
+
+SEGURANCA:
+A versao v2.5 preserva a conectividade durante todas as operacoes.
+Comandos perigosos como "netsh winsock reset" foram removidos ou
+aplicados apenas quando necessario com backup automatico.
+
+================================================================================
+                              ESTRUTURA DE ARQUIVOS
+================================================================================
+
+LOCALIZACAO BASE: C:\BackupLVS\
+
+ESTRUTURA:
+C:\BackupLVS\
+├── Network\                    (configuracoes de rede)
+├── Cleaner\                    (backups da limpeza)
+├── Reports\                    (relatorios anteriores)
+├── lvs-cleaner-log.txt        (log limpeza)
+├── lvs-network-log.txt        (log rede)
+├── LVS-Cleaner-Report.html    (relatorio limpeza)
+└── LVS-Network-Report.html    (relatorio rede)
+
+COPIAS AUTOMATICAS: Desktop do usuario
+
+================================================================================
+                                 REQUISITOS
+================================================================================
+
+SISTEMA: Windows 7 SP1 ou superior
+PRIVILEGIOS: Administrador (OBRIGATORIO)
+ESPACO: 100MB minimo, 500MB recomendado
+RAM: 2GB minimo, 4GB+ recomendado
+REDE: Conexao ativa (para testes de rede)
+
+EXECUCAO:
+1. Feche todos os programas desnecessarios
+2. Clique direito no script
+3. Selecione "Executar como administrador"
+4. Siga o menu interativo
+5. Verifique os relatorios gerados
+
+================================================================================
+                                TROUBLESHOOTING
+================================================================================
+
+PROBLEMA: Script nao executa
+SOLUCAO: Executar como administrador
+
+PROBLEMA: Algumas etapas falham
+SOLUCAO: Fechar todos os programas antes da execucao
+
+PROBLEMA: Lentidao apos limpeza
+SOLUCAO: Normal, cache sendo reconstruido, melhora com uso
+
+PROBLEMA: Erro acesso negado
+SOLUCAO: Verificar exclusoes no antivirus
+
+PROBLEMA: Perda de conectividade
+SOLUCAO: Usar opcao 3 (renovar IP/DNS) no script de rede
+
+LOGS: Sempre verificar os arquivos de log em C:\BackupLVS\
+
+================================================================================
+                                  AUTOMACAO
+================================================================================
+
+LIMPEZA AUTOMATICA:
+01-Limpeza-Enterprise.bat /silent /backup
+
+DIAGNOSTICO AUTOMATICO:
+02-Diagnostico-Rede.bat /auto
+
+TASK SCHEDULER (semanal):
+schtasks /create /tn "LVS Weekly Cleanup" /tr "C:\Scripts\01-Limpeza-Enterprise.bat /silent /backup" /sc weekly
+
+================================================================================
+                                 RELATORIOS HTML
+================================================================================
+
+CARACTERISTICAS:
+- Design profissional responsivo
+- Cores tematicas (Verde=Limpeza, Azul=Rede)
+- Informacoes tecnicas completas
+- Estatisticas visuais
+- Timestamps UTC padronizados
+- Export automatico para Desktop
+
+CONTEUDO LIMPEZA:
+- Informacoes do sistema
+- Resultado de cada etapa
+- Estatisticas finais
+- Localizacao de backups
+
+CONTEUDO REDE:
+- Configuracao completa (ipconfig /all)
+- Testes de conectividade
+- Tabela de rotas
+- Estatisticas de interface
+- Status de servicos
+
+================================================================================
+                                   SUPORTE
+================================================================================
+
+GITHUB: https://github.com/lvsodre/lvs-tools
+LINKEDIN: https://linkedin.com/in/lvsodre
+USUARIO: lvsodre
+
+LOGS: Sempre verificar primeiro os arquivos de log:
+- C:\BackupLVS\lvs-cleaner-log.txt
+- C:\BackupLVS\lvs-network-log.txt
+
+VERSIONING:
+- Limpeza Enterprise: v4.6 (2025-08-01)
+- Diagnostico Rede: v2.5 (2025-08-01)
+
+================================================================================
+                                   CHANGELOG
+================================================================================
+
+v4.6 (LIMPEZA) - 2025-08-01:
++ Relatorio HTML profissional
++ Estrutura de pastas padronizada
++ 18 etapas completas e seguras
++ Sistema de backup inteligente
+
+v2.5 (REDE) - 2025-08-01:
++ Estrutura unificada com subpasta Network
++ Seguranca melhorada (preserva conectividade)
++ Relatorio HTML detalhado
++ 9 funcionalidades completas
+
+================================================================================
+
+Desenvolvido por: Leandro Venturini Sodre (lvsodre)
+LinkedIn: linkedin.com/in/lvsodre
+Data: 2025-08-01 20:06:49 UTC
+Powered by: AI Technology (LuigiGPT + Claude AI)
+
+================================================================================
